@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TodoListItem } from '../models';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
+  @Input() todoItems: TodoListItem[];
+  @Output() clearCompletedItems = new EventEmitter();
+  @Output() markItemComplete = new EventEmitter<TodoListItem>();
   constructor() { }
 
   ngOnInit() {
   }
-
+  markCompleted(item) {
+    this.markItemComplete.emit(item);
+  }
+  removeCompleted() {
+    this.clearCompletedItems.emit();
+  }
 }

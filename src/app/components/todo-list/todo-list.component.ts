@@ -8,25 +8,22 @@ import { TodoListItem } from './models';
 })
 
 export class TodoListComponent {
-  items: TodoListItem[] =  [
-    { description: 'Mow Grass', completed: false},
-    { description:'Take Trash Out', completed: true}
+  items: TodoListItem[] = [
+    { description: 'Mow Grass', completed: false },
+    { description: 'Take Trash Out', completed: true }
   ];
 
-  markComplete(item:TodoListItem){
-    item.completed = true
+  markCompleted(item: TodoListItem) {
+    item.completed = true;
   }
 
-  add(what: HTMLInputElement){
-    const description = what.value;
-    this.items.unshift({description, completed:false });
-  
-    what.value='';
-    what.focus();
+  add(what: string) {
+    const description = what;
+    this.items.unshift({ description, completed: false });
   }
 
-  removeCompleted(){
-    this.items = this.items.filter(item=> !item.completed)
+  removeCompleted() {
+    this.items = this.items.filter(item => !item.completed);
   }
 
 }
