@@ -16,17 +16,17 @@ export class TodoListComponent {
   markComplete(item:TodoListItem){
     item.completed = true
   }
+
+  add(what: HTMLInputElement){
+    const description = what.value;
+    this.items.unshift({description, completed:false });
   
-add(what: HTMLInputElement){
-  const description = what.value;
- this.items.unshift({description, completed:false });
+    what.value='';
+    what.focus();
+  }
 
-  what.value='';
-  what.focus();
-}
-
-removeCompleted(){
-  this.items = this.items.filter(item=> !item.completed)
-}
+  removeCompleted(){
+    this.items = this.items.filter(item=> !item.completed)
+  }
 
 }
