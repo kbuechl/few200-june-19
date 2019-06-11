@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicationsService } from '../communications.service';
 
 @Component({
   selector: 'app-lhs',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LhsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: CommunicationsService) { }
 
   ngOnInit() {
   }
   setIt(what: HTMLInputElement) {
-    //do something
+    this.service.setMessage(what.value);
 
     what.value = '';
     what.focus();

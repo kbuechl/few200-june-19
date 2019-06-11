@@ -11,6 +11,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { CommunicationsComponent } from './components/communications/communications.component';
 import { LhsComponent } from './components/communications/lhs/lhs.component';
 import { RhsComponent } from './components/communications/rhs/rhs.component';
+import { CommunicationsService } from './components/communications/communications.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { RhsComponent } from './components/communications/rhs/rhs.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CommunicationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
