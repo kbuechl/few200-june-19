@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoListItem } from './models';
+import { TodosDataService } from './todo-data-service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,23 +9,28 @@ import { TodoListItem } from './models';
   styleUrls: ['todo-list.component.css']
 })
 
-export class TodoListComponent {
-  items: TodoListItem[] = [
-    { description: 'Mow Grass', completed: false },
-    { description: 'Take Trash Out', completed: true }
-  ];
+export class TodoListComponent implements OnInit {
+
+  todos$: Observable<TodoListItem[]>;
+
+  constructor(private service: TodosDataService) {
+
+  }
+  ngOnInit() {
+    this.todos$ = this.service.getAll();
+  }
 
   markCompleted(item: TodoListItem) {
-    item.completed = true;
+
   }
 
   add(what: string) {
     const description = what;
-    this.items.unshift({ description, completed: false });
+    this.service.add(description);
   }
 
   removeCompleted() {
-    this.items = this.items.filter(item => !item.completed);
+    //todo
   }
 
 }

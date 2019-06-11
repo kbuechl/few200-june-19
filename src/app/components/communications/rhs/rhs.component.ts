@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommunicationsService } from '../communications.service';
+import { CommunicationsService, selectMessageAsLower, selectMessageAsUpper } from '../communications.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rhs',
@@ -8,9 +9,13 @@ import { CommunicationsService } from '../communications.service';
 })
 export class RhsComponent implements OnInit {
   message = '';
+  upperMessage$: Observable<string>;
+  lowerMessage$: Observable<string>;
   constructor(private service: CommunicationsService) { }
 
   ngOnInit() {
+    this.upperMessage$ = this.service.getSubscription2(selectMessageAsUpper);
+    this.lowerMessage$ = this.service.getSubscription2(selectMessageAsLower);
   }
 
   getIt() {

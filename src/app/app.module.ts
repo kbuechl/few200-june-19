@@ -12,6 +12,8 @@ import { CommunicationsComponent } from './components/communications/communicati
 import { LhsComponent } from './components/communications/lhs/lhs.component';
 import { RhsComponent } from './components/communications/rhs/rhs.component';
 import { CommunicationsService } from './components/communications/communications.service';
+import { HttpClientModule } from '@angular/common/http';
+import { TodosDataService } from './components/todo-list/todo-data-service';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import { CommunicationsService } from './components/communications/communication
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [CommunicationsService],
+  providers: [CommunicationsService, TodosDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
