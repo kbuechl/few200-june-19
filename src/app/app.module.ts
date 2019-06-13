@@ -36,7 +36,14 @@ import { CounterComponent } from './components/counter/counter.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability: true,
+        strictActionSerializability: true,
+        strictStateSerializability: true
+      }
+    }),
     StoreDevtoolsModule.instrument()
   ],
   providers: [CommunicationsService, TodosDataService],
