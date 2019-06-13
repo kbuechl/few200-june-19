@@ -1,0 +1,10 @@
+<div class="alert alert-info"
+     *ngIf="items.length === 0">
+  You have no items in your list.
+</div>
+<ul class="list-unstyled">
+  <li class="alert alert-success"
+      *ngFor="let item of items">
+    {{item.description}}
+  </li>
+</ul>

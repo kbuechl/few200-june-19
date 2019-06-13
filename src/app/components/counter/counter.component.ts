@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { State, selectCurrentCount, selectAtZero, selectCountBy } from '../../reducers';
+import { State, selectCurrentCount, selectAtZero, selectCountBy, selectDecrementDisabled } from '../../reducers';
 import * as counterActions from '../../actions/counter.actions';
 
 @Component({
@@ -13,12 +13,15 @@ export class CounterComponent implements OnInit {
   current$: Observable<number>;
   atZero$: Observable<boolean>;
   countBy$: Observable<number>;
+  disableDecrement$: Observable<boolean>;
+
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
     this.current$ = this.store.select(selectCurrentCount);
     this.atZero$ = this.store.select(selectAtZero);
     this.countBy$ = this.store.select(selectCountBy);
+    this.disableDecrement$ = this.store.select(selectDecrementDisabled);
   }
 
   increment() {

@@ -1,0 +1,11 @@
+<header class="page-header">
+  <h4>Your Shopping list</h4>
+</header>
+<div class="row">
+  <div class="col">
+    <app-entry></app-entry>
+  </div>
+  <div class="col">
+    <app-list [items]="items$ | async"></app-list>
+  </div>
+</div>

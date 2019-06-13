@@ -1,6 +1,6 @@
 <input type="button"
        (click)="decrement()"
-       [disabled]="atZero$ |async"
+       [disabled]="disableDecrement$ |async"
        class="btn btn-sm btn-primary"
        value="-">
 <span>{{current$ | async}}</span>

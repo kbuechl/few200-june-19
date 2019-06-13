@@ -14,24 +14,8 @@ const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(actions.countIncremented, (state: State) => ({ current: state.current + state.by, by: state.by })),
-  on(actions.countDecremented, (state: State) => ({ current: state.current - state.by, by: state.by })),
-  on(actions.setCountBy, (state, { by }) => ({ current: state.current, by })),
+  on(actions.countIncremented, (state: State) => ({ ...state, current: state.current + state.by })),
+  on(actions.countDecremented, (state: State) => ({ ...state, current: state.current - state.by })),
+  on(actions.setCountBy, (state, { by }) => ({ ...state, by })),
   on(actions.countReset, state => initialState)
 );
-// export function reducer(state: State = initialState, action: Action): State {
-//   switch (action.type) {
-//     case 'INCREMENT': {
-//       return { current: state.current + 1 };
-//     }
-//     case 'DECREMENT': {
-//       return { current: state.current - 1 };
-//     }
-//     case 'RESET': {
-//       return initialState;
-//     }
-//     default: {
-//       return state;
-//     }
-//   }
-// }
